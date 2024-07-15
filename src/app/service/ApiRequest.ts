@@ -38,7 +38,9 @@ export async function apiRequest(
     const mergedOptions: RequestOptions = { ...defaultOptions, ...options };
     const queryString: string = buildQueryString({...query, ...mergedOptions});
     try {
-        const response = await fetch(`${API_URL}/${endpoint}${queryString}`);
+        const url = `${API_URL}/${endpoint}${queryString}`;
+        console.log(url)
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Failed to fetch data: ${response.statusText}`);
         }        
