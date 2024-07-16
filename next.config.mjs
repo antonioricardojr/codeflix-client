@@ -1,11 +1,12 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
+    reactStrictMode: true,
     experimental: {
-        appDir: true,
+      // Remove or correct any unrecognized keys here
     },
     images: {
         domains: ['m.media-amazon.com'],
     },
-};
-
-export default nextConfig;
+  };
+  
+  export default nextConfig;
+  

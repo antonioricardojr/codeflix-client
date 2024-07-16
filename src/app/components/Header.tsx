@@ -1,14 +1,29 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from 'next/image';
 import { UserProfile } from "./UserProfile";
 import { NavLinks } from "./NavLinks";
 import { useScroll } from "../hooks/useScroll";
+import SearchForm from "./SearchForm";
+import { useRouter, useSearchParams } from "next/navigation";
+
 
 export default function Header() {
     const isScrolled = useScroll();
+    const router = useRouter();
+    const params = useSearchParams();
+    const initialSearchTerm = params.get('title') || '';
+    const [searchTerm, setSearchTerm] = useState<string>(initialSearchTerm);
+    const onSearchTermChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    };
 
-    
+    const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const newParams = new URLSearchParams(params.toString());
+        newParams.set('title', searchTerm);
+        router.push(`/search?${newParams.toString()}`);
+    };
     const Logo = () => (
         <Image className="cursor-pointer" src='/logo.svg' alt='netflix' width={90} height={90}/>
     )
@@ -36,7 +51,10 @@ export default function Header() {
                 <NavLinks/>
             </div>
 
-            <UserProfile/>
+            <div className="flex items-center space-x-2">
+                <SearchForm searchTerm={searchTerm} onSearch={onSearch} onSearchTermEventChange={onSearchTermChange}/>
+                <UserProfile/>
+            </div>
         </header>
     )
 }
