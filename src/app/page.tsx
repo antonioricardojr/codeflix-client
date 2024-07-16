@@ -20,7 +20,7 @@ export default async function Home() {
 
 
   return (
-  <div className="relative h-screen overflow-hidden bg-gradient-to-b lg:h-[148vh]">
+  <div className="relative h-screen overflow-hidden bg-gradient-to-b lg:h-auto">
     <Header/>
     <main className="relative pb-24 pl-4 lg:pl-16">
         <Banner movie={featuredMovie}/>
