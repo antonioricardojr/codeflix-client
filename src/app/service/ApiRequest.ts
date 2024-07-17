@@ -1,9 +1,5 @@
 const API_URL = process.env.API_URL || 'http://localhost:3000';
 
-//Featured
-
-//Movies
-
 export interface ApiQueryParams {
     [key: string]: string | number | boolean;
 }
@@ -17,7 +13,7 @@ export interface RequestOptions {
 export const defaultOptions: RequestOptions = {
     page: 1,
     _limit: 10,
-    rating_like: 0,
+    rating_like: undefined,
  }
 
 export function buildQueryString(params: ApiQueryParams) {
