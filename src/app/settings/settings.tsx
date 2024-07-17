@@ -29,7 +29,8 @@ export const getUserInfo = (): Promise<{
     });
 };
 
-export async function getUserById(id: string): Promise<User> {
+
+export async function getUserById(id: string): Promise<any> {
     const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
     console.log(response);
     const user = await response.json();

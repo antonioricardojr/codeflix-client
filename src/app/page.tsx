@@ -24,8 +24,8 @@ export default async function Home() {
     <Header/>
     <main className="relative pb-24 pl-4 lg:pl-16">
         <Banner movie={featuredMovie}/>
-        {moviesByGenre.map((genre) => (
-            <div>
+        {moviesByGenre.map((genre, index) => (
+            <div key={index}>
               {<MovieRow key={genre.sectionTitle} sectionTitle={genre.sectionTitle} movies={genre.movies}/>}
             </div>          
             

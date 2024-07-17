@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from 'react';
 import React, { useState } from "react";
 import Image from 'next/image';
 import { UserProfile } from "./UserProfile";
@@ -31,34 +32,38 @@ export default function Header() {
         </Link>
     )
 
-    return (
-        <header className={`${isScrolled && 'bg-black'}
-        fixed
-        top-0
-        z-50
-        flex
-        w-full
-        items-center
-        justify-between
-        bg-gradient-to-t
-        from-transparent
-        to-black
-        p-2
-        px-4
-        transition-all
-        lg:px-16
-        lg:py-6
-        `}>
-            <div className="flex items-center space-x-2">
-                <Logo/>
-                <NavLinks/>
-            </div>
+    const Loading = () => <div>Loading...</div>;
 
-            <div className="flex items-center space-x-2">
-                <SearchForm searchTerm={searchTerm} onSearch={onSearch} onSearchTermEventChange={onSearchTermChange}/>
-                <UserProfile/>
-            </div>
-        </header>
+    return (
+        <Suspense fallback={<Loading />}>
+            <header className={`${isScrolled && 'bg-black'}
+            fixed
+            top-0
+            z-50
+            flex
+            w-full
+            items-center
+            justify-between
+            bg-gradient-to-t
+            from-transparent
+            to-black
+            p-2
+            px-4
+            transition-all
+            lg:px-16
+            lg:py-6
+            `}>
+                <div className="flex items-center space-x-2">
+                    <Logo/>
+                    <NavLinks/>
+                </div>
+
+                <div className="flex items-center space-x-2">
+                    <SearchForm searchTerm={searchTerm} onSearch={onSearch} onSearchTermEventChange={onSearchTermChange}/>
+                    <UserProfile/>
+                </div>
+            </header>
+        </Suspense>
     )
 }
 
