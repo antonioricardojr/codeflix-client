@@ -1,7 +1,7 @@
 "use client"
-import BuggyButton from '@/app/components/BuggyButton';
-import { getUserInfo } from '@/app/lib/settings'
-import React, { Component } from 'react'
+import React from 'react'
+import { getUserInfo } from '../settings';
+import BuggyButton from '../../components/BuggyButton';
 
 async function User() {
   const {
