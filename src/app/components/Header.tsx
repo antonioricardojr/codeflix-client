@@ -6,6 +6,7 @@ import { NavLinks } from "./NavLinks";
 import { useScroll } from "../hooks/useScroll";
 import SearchForm from "./SearchForm";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 
 export default function Header() {
@@ -25,7 +26,9 @@ export default function Header() {
         router.push(`/search?${newParams.toString()}`);
     };
     const Logo = () => (
-        <Image className="cursor-pointer" src='/logo.svg' alt='netflix' width={90} height={90}/>
+        <Link href="/">
+            <Image className="cursor-pointer" src='/logo.svg' alt='netflix' width={90} height={90}/>
+        </Link>
     )
 
     return (

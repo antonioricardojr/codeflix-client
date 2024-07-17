@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.4",
+    "@vidstack/react": "^1.11.29",
     "json-server": "^1.0.0-beta.1",
     "next": "14.2.3",
     "react": "^18.3.1",
