@@ -1,4 +1,4 @@
-import Header from "./components/Header";
+import { HeaderBar } from "./components/Header";
 import MovieRow from "./components/MovieRow";
 import Banner from "./components/Banner";
 import { getFeaturedMovie, getMoviesByGenre } from "./service/MovieService";
@@ -21,7 +21,7 @@ export default async function Home() {
 
   return (
   <div className="relative h-screen overflow-hidden bg-gradient-to-b lg:h-auto">
-    <Header/>
+    <HeaderBar/>
     <main className="relative pb-24 pl-4 lg:pl-16">
         <Banner movie={featuredMovie}/>
         {moviesByGenre.map((genre, index) => (

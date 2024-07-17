@@ -10,7 +10,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 
-export default function Header() {
+function Header() {
     const isScrolled = useScroll();
     const router = useRouter();
     const params = useSearchParams();
@@ -32,10 +32,8 @@ export default function Header() {
         </Link>
     )
 
-    const Loading = () => <div>Loading...</div>;
 
     return (
-        <Suspense fallback={<Loading />}>
             <header className={`${isScrolled && 'bg-black'}
             fixed
             top-0
@@ -63,7 +61,15 @@ export default function Header() {
                     <UserProfile/>
                 </div>
             </header>
-        </Suspense>
     )
 }
+
+
+export function HeaderBar() {
+    return (
+      <Suspense>
+        <Header />
+      </Suspense>
+    )
+  }
 

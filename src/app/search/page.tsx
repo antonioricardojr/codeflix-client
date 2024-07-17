@@ -1,6 +1,6 @@
 import React from "react";
 import { searchMovies } from "../service/MovieService";
-import Header from "../components/Header";
+import { HeaderBar } from "../components/Header";
 import MovieCard from "../components/MovieCard";
 
 interface ISearchParams {
@@ -20,7 +20,7 @@ export default async function SearchResults({ searchParams} : ISearchProps) {
     if (movies.length === 0) {
         return (
             <div className="relative bg-gradient-to-b pb-8">
-                <Header />
+                <HeaderBar />
                 <main className="relative mb-48 mt-28 h-screen pl-4 lg:pl-16">
                     <h1 className="mb-4 text-2xl font-bold">
                         Search Results for: <span className="text-red-500">{title}</span>
@@ -33,7 +33,7 @@ export default async function SearchResults({ searchParams} : ISearchProps) {
 
     return (
         <div className="relative bg-gradient-to-b pb-8">
-            <Header />
+            <HeaderBar />
             <main className="relative mb-48 mt-28 h-screen pl-4 lg:pl-16">
                 <h1 className="mb-4 text-2xl font-bold">
                     Search Results for: <span className="text-red-500">{title}</span>
