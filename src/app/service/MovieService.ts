@@ -11,27 +11,25 @@ export const getFeaturedMovie = async (id: string):Promise<Movie> => {
 }
 
 export const getMoviesByGenre = async (
-    genre: string,
+    genre: string = '',
     options: RequestOptions
     ):Promise<Movies> => {
     
-        return apiRequest(`movies`, 
-            { genres_like: encodeURIComponent(genre),
+        return await apiRequest(`movies`, {
+            genres_like: encodeURIComponent(genre),
         }, options);
 }
 
 export const searchMovies = async (
     title: string = '',
     genre: string = '',
-    options: RequestOptions = {
-        _limit: 100
-    }
+    options?: RequestOptions
     ):Promise<Movies> => {
     
         return await apiRequest(
             `movies`, 
             {
-                title_like: encodeURIComponent(title),
-                genres_like: encodeURIComponent(genre),
+                title_like: title ? encodeURIComponent(title) : '',
+                genres_like: genre ? encodeURIComponent(genre) : '',
             }, options);
 }

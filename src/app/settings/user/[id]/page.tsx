@@ -1,7 +1,7 @@
 "use client"
-import { getUserById, getUserInfo } from '@/app/lib/settings'
 import { notFound } from 'next/navigation';
-import React, { Component } from 'react'
+import React from 'react'
+import { getUserById } from '../../settings';
 
 async function User({params}:{params: {id: string}}) {
     const {name, id, username, website} = await getUserById(params.id);
